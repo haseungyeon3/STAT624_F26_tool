@@ -1,0 +1,8 @@
+FROM postgres:15.4
+
+# Copy your SQL dump into the initialization scripts folder
+COPY datadump.sql /docker-entrypoint-initdb.d/
+
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=stat1234
+ENV POSTGRES_DB=sqlda
