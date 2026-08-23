@@ -9,7 +9,7 @@
 
 Check conditions:
 
-5. Python:  In a different web browser tab, copy and paste the custom URL provided in the terminal window to access the Jupyter notebook environment to interact with the database. 
+5. Python:  Open a web browser window, copy and paste the custom URL provided in the terminal window to access the Jupyter notebook environment to interact with the database. 
 6. PostgreSql:  Open a web browser window and type `localhost:5050` to open pgAdmin4 GUI to interact with the database.
 7. Mongodb:  Open a web browser window and type `localhost:8081` to open Mongo-express GUI to interact with the database.
 
