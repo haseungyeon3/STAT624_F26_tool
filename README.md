@@ -13,4 +13,6 @@ Check conditions:
 6. PostgreSql:  Open a web browser window and type `localhost:5050` to open pgAdmin4 GUI to interact with the database.
 7. Mongodb:  Open a web browser window and type `localhost:8081` to open Mongo-express GUI to interact with the database.
 
- 
+** Use `docker ps` to list all running docker container
+** Use `docker stop [container_name]` to stop unused docker container and save/free computing resources used by its processes
+** -- Use Docker Desktop to manually stop/run a container
