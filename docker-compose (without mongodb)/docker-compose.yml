@@ -1,0 +1,58 @@
+services:
+
+  postgres:
+    container_name: pg_container
+    image: seungyeonha3/s624:pgsql1.1.1
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD:  ${POSTGRES_PASSWORD}
+      POSTGRES_DATABASE:  ${POSTGRES_DB}
+
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4:9.4
+    restart: always
+    env_file:
+      - .env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    volumes:
+      - ./db_image/servers.json:/pgadmin4/servers.json
+      - ./sql_scripts:/home/sql_scripts
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+
+  pynb:
+    container_name: pynb_container
+    image:  seungyeonha3/s624:pyn1.5
+    user: root
+    restart: always
+    volumes:
+      - ./jupyter_notebooks:/home/notebooks
+    ports:
+      - "8888:8888"
+      - "8797:8797"
+ 
+
+volumes:
+  sql_scripts:
+  jupyter_notebooks:
+  db-data:
+ 
+ 
+ 
+ 
+ 
