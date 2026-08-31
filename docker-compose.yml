@@ -45,57 +45,13 @@ services:
     ports:
       - "8888:8888"
       - "8797:8797"
-
  
-  mongo:
-    image: mongo:8
-    container_name: mongodb
-    restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-    ports:
-      - "127.0.0.1:27018:27017"
-    volumes:
-      - mongo_data:/data/db
-    healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          'mongosh --quiet --host localhost --port 27017 --username "$$MONGO_INITDB_ROOT_USERNAME" --password "$$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase admin --eval "quit(db.adminCommand({ ping: 1 }).ok ? 0 : 1)"'
-        ]
-      interval: 5s
-      timeout: 10s
-      retries: 30
-      start_period: 60s
-
-  mongo-express:
-    image: mongo-express:latest
-    container_name: mongo-express
-    restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      ME_CONFIG_MONGODB_URL: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/?authSource=admin"
-      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
-      ME_CONFIG_BASICAUTH_ENABLED: "true"
-      ME_CONFIG_BASICAUTH_USERNAME: ${MONGOEXPRESS_LOGIN}
-      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGOEXPRESS_PASSWORD}
-    ports:
-      - "127.0.0.1:8081:8081"
-    depends_on:
-      mongo:
-        condition: service_healthy
-
-
 
 volumes:
   sql_scripts:
   jupyter_notebooks:
   db-data:
-  mongo_data:
+ 
  
  
  
