@@ -1,4 +1,4 @@
-# SQL+Python+MongoDB Docker Environment
+# SQL+Python (+MongoDB) Docker Environment
 **Description**: Dockerfiles and docker compose for SQL and Python environment for STAT 624
 
 ## Quick start guide
