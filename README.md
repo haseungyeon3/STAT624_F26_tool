@@ -1,5 +1,6 @@
 # SQL+Python (+MongoDB) Docker Environment
 **Description**: Dockerfiles and docker compose for SQL and Python environment for STAT 624
+**replace `docker-compose.yml` file with the docker compose file located in `docker-compose (+mongodb)` if you want to set up a MongoDB environment on your local machine. Note: This will add a Docker image of approximately 1.5 GB.
 
 ## Quick start guide
 1. Download zipped folder containing all files in this repository.
