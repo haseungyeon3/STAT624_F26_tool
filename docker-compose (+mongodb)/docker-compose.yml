@@ -37,7 +37,7 @@ services:
 
   pynb:
     container_name: pynb_container
-    image:  seungyeonha3/s624:pyn1.5
+    image:  seungyeonha3/s624:pyn1.5.1
     user: root
     restart: always
     volumes:
